@@ -16,6 +16,6 @@ namespace chudoShoes.Helper
         {
             MessageBox.Show(message, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
-
+        
     }
 }
