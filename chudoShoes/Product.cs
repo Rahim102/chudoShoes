@@ -35,6 +35,6 @@ namespace chudoShoes
         public virtual ICollection<StockItem> StockItem { get; set; }
         public virtual Subcategory Subcategory { get; set; }
         public int TotalQuantity => StockItem?.Sum(s => s.AviableQuantity) ?? 0;
-
+ 
     }
 }

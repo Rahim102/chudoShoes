@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEditProduct.xaml.cs">
+      <DependentUpon>AddEditProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>shoes.tt</DependentUpon>
     </Compile>
@@ -117,6 +120,11 @@
     <Compile Include="User.cs">
       <DependentUpon>shoes.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Page Include="AddEditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

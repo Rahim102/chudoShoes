@@ -8,10 +8,39 @@
         Title="Продукты" Height="800" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
+        <Grid HorizontalAlignment="Left"
+              Name="AdmPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="20 0" Grid.Column="0">
+                <TextBlock Text="Поиск"/>
+                <TextBox Name="SearchingTB"
+                         Width="200"
+                       TextChanged="SearchingTB_TextChanged" />
+            </StackPanel>
+            <StackPanel Margin="20 0" Grid.Column="1">
+                <TextBlock Text="Сортировка"/>
+                <ComboBox Name="SortingCB"
+                 Width="200"
+                          SelectionChanged="SortingCB_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="20 0" Grid.Column="2">
+                <TextBlock Text="Фильтрация"/>
+                <ComboBox Name="FilteringCB"
+                          Width="200"
+                          SelectionChanged="FilteringCB_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+              
+        
         <TextBlock Name="FullName"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Right"
@@ -20,7 +49,9 @@
             <ItemsControl Name ="ProductList">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="10">
+                        <Border Margin="10" Tag="{Binding Id}"
+                                Background="{Binding Background}"
+                                MouseDown="Border_MouseDown">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -35,18 +66,30 @@
                                 </Border>
                                 <StackPanel Grid.Column="1">
                                     <TextBlock FontWeight="SemiBold">
-                                      <Run Text="{Binding Subcategory.Category.Name}" />
+                                      <Run Text="{Binding Manufacturer.Name}" />
                                         <Run Text=" | "/>
                                         <Run Text="{Binding Name}"/>
                                         
                                     </TextBlock>
-                                    <TextBlock Text="{Binding Description}"
-                                               TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding TotalQuantity }"/>
-                                    <TextBlock Text="{Binding Material}"
-                                               TextWrapping="Wrap"/>
-                                 
-                                    
+                                    <TextBlock >
+                                        <Run Text="Категория: "/>
+                                        <Run Text="{Binding Subcategory.Category.Name}"
+                                               />
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Run Text="Количество: "/>
+                                        <Run Text="{Binding StrQuantity }"/>
+                                        <Run Text=" ( "/>
+                                         <Run Text=" ) "/>
+
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap">
+                                         <Run Text="Состав: "/>
+                                         <Run Text="{Binding Material}"
+                                               />
+                                    </TextBlock>
+
+
 
                                 </StackPanel>
                                 <Border Grid.Column="2">
@@ -69,6 +112,15 @@
                 Margin="20 0"
                 Click="LogOutButton_Click"
                 ></Button>
+        <Button Name ="CreateButton"
+           Content="Создать"
+           Grid.Row="2"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Right"
+           Margin="20 0"
+                Visibility="Collapsed"
+           Click="CreateButton_Click"
+           ></Button>
 
     </Grid>
 </Window>

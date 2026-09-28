@@ -29,7 +29,7 @@ namespace chudoShoes
             else
             {
                 CurrentSession.CurrentUser = user;
-                new ProductWindow(user).Show();
+                new ProductWindow().Show();
                 Close();
             }
 
