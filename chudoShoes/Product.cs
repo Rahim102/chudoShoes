@@ -11,8 +11,7 @@ namespace chudoShoes
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -34,7 +33,5 @@ namespace chudoShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockItem> StockItem { get; set; }
         public virtual Subcategory Subcategory { get; set; }
-        public int TotalQuantity => StockItem?.Sum(s => s.AviableQuantity) ?? 0;
- 
     }
 }

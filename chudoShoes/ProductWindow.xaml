@@ -121,6 +121,6 @@
                 Visibility="Collapsed"
            Click="CreateButton_Click"
            ></Button>
-
+        <Button Name ="AnalyticsBt" Content="Аналитика" Width="100" Height="25" Margin="10 0" Visibility="Collapsed" Click="AnalyticsBt_Click"/>
     </Grid>
 </Window>

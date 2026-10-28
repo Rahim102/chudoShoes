@@ -1,0 +1,62 @@
+﻿<Window x:Class="chudoShoes.AnalyticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:chudoShoes"
+        mc:Ignorable="d"
+        Title="AnalyticsWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions >
+        <Grid Grid.Row="0" Margin="0 0 0 15">
+            <Button Content="Назад" Width="80" Height="25" HorizontalAlignment="Left" Click="Button_Click">
+                
+            </Button>
+            <TextBlock Text="Аналитика продаж" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
+        <Border Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Период с:" VerticalAlignment="Center"/>
+                <TextBox Name ="StartDateBox" Width="100" Height="25" VerticalAlignment="Center" TextChanged="StartDateBox_TextChanged"/>
+                <TextBlock Text="по:" VerticalAlignment="Center"/>
+                <TextBox Name ="EndDateBox" Width="100" Height="25" VerticalAlignment="Center" TextChanged="StartDateBox_TextChanged"/>
+                <Button Name="ExportPdf" Content="Экспорт в PDF" Width="100" Height="25" Margin="25 0 0 0" Click="ExportPdf_Click"/>
+            </StackPanel>
+        </Border>
+        <StackPanel Name="PrintArea" Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0">
+                    <StackPanel>
+                        <TextBlock Text="Количество заказов:"/>
+                        <TextBlock Name="TotalOrdersText" Text="0"/>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="1">
+                    <StackPanel >
+                        <TextBlock Text="Сумма продаж:"/>
+                        <TextBlock Name="TotalSumText" Text="0 руб."/>
+                        
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <TextBlock Text="Топ 5 моделей обуви:"/>
+            <DataGrid Name="TopGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" Height="250">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Модель" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Модель" Binding="{Binding Manufacturer}"/>
+                    <DataGridTextColumn Header="Модель" Binding="{Binding Count}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid> 
+</Window>

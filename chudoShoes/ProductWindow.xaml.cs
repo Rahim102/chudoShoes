@@ -55,6 +55,10 @@ namespace chudoShoes
             {
                 CreateButton.Visibility = Visibility.Visible;
             }
+            if (user.RoleId == 1)
+            {
+                AnalyticsBt.Visibility = Visibility.Visible;
+            }
         }
 
         private void LoadData()
@@ -141,11 +145,16 @@ namespace chudoShoes
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            User user = CurrentSession.CurrentUser;
-            if (user.RoleId != 1)
-                return;
+      
             int id = (int)(sender as Border).Tag;
             new AddEditProduct(id).Show();
+            Close();
+        
+    }
+
+        private void AnalyticsBt_Click(object sender, RoutedEventArgs e)
+        {
+            new AnalyticsWindow().Show();
             Close();
         }
     }
